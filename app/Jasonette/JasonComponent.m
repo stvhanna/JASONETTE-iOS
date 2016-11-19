@@ -77,6 +77,22 @@
             component.layer.cornerRadius = 0;
         }
         
+        // border width
+        if(style[@"border_width"]){
+            CGFloat borderWidth = [style[@"border_width"] floatValue];
+            component.layer.borderWidth = borderWidth;
+        } else {
+            component.layer.borderWidth = 0;
+        }
+        
+        // border color
+        if(style[@"border_color"]){
+            UIColor *color = [JasonHelper colorwithHexString:style[@"border_color"] alpha:1.0];
+            component.layer.borderColor = color.CGColor;
+        } else {
+            component.layer.borderColor = nil;
+        }
+        
         // text styling
     }
     [self stylize:json text:component];
@@ -161,25 +177,23 @@
         
         if([el isKindOfClass:[UILabel class]] && [el respondsToSelector:@selector(textInsets)]){
 
+            // Padding Handling
+            NSString *padding_left = @"0";
+            NSString *padding_right = @"0";
+            NSString *padding_top = @"0";
+            NSString *padding_bottom = @"0";
             if(style[@"padding"]){
-                // Padding Handling
-                NSString *padding_left;
-                NSString *padding_right;
-                NSString *padding_top;
-                NSString *padding_bottom;
-                if(style[@"padding"]){
-                    NSString *padding = style[@"padding"];
-                    padding_left = padding;
-                    padding_top = padding;
-                    padding_right = padding;
-                    padding_bottom = padding;
-                }
-                if(style[@"padding_left"]) padding_left = style[@"padding_left"];
-                if(style[@"padding_right"]) padding_right = style[@"padding_right"];
-                if(style[@"padding_top"]) padding_top = style[@"padding_top"];
-                if(style[@"padding_bottom"]) padding_bottom = style[@"padding_bottom"];
-                ((TTTAttributedLabel*)el).textInsets = UIEdgeInsetsMake([padding_top floatValue], [padding_left floatValue], [padding_bottom floatValue], [padding_right floatValue]);
+                NSString *padding = style[@"padding"];
+                padding_left = padding;
+                padding_top = padding;
+                padding_right = padding;
+                padding_bottom = padding;
             }
+            if(style[@"padding_left"]) padding_left = style[@"padding_left"];
+            if(style[@"padding_right"]) padding_right = style[@"padding_right"];
+            if(style[@"padding_top"]) padding_top = style[@"padding_top"];
+            if(style[@"padding_bottom"]) padding_bottom = style[@"padding_bottom"];
+            ((TTTAttributedLabel*)el).textInsets = UIEdgeInsetsMake([padding_top floatValue], [padding_left floatValue], [padding_bottom floatValue], [padding_right floatValue]);
             ((TTTAttributedLabel *)el).lineBreakMode = NSLineBreakByTruncatingTail;
         }
         

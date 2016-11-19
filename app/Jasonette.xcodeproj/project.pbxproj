@@ -60,6 +60,7 @@
 		5E3177A61D1F28C100D87778 /* JasonTimerAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3177A01D1F28C100D87778 /* JasonTimerAction.m */; };
 		5E3177A71D1F28C100D87778 /* JasonUtilAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3177A21D1F28C100D87778 /* JasonUtilAction.m */; };
 		5E3840751D3A3D2200D1C421 /* placeholderr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3840741D3A3D2200D1C421 /* placeholderr@2x.png */; };
+		5E9862691DCF1F640084CA4A /* JasonNotificationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9862681DCF1F640084CA4A /* JasonNotificationAction.m */; };
 		5EBFBB511D563ABD0074B805 /* UIView+JasonComponentPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBFBB501D563ABD0074B805 /* UIView+JasonComponentPayload.m */; };
 		5EDF644E1DB0480500C5E403 /* JasonSessionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF644D1DB0480500C5E403 /* JasonSessionAction.m */; };
 		5EE85B6A1DA444770049EACE /* JasonMapComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE85B691DA444770049EACE /* JasonMapComponent.m */; };
@@ -68,12 +69,14 @@
 		5EE85B7E1DA59D740049EACE /* JasonComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE85B7D1DA59D740049EACE /* JasonComponent.m */; };
 		5EE85B811DA5C0090049EACE /* JasonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE85B801DA5C0080049EACE /* JasonLayer.m */; };
 		5EEE3E6D1DBAE6DA00DE7ABD /* parser.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE3E6C1DBAE6DA00DE7ABD /* parser.js */; };
+		5EF904361DD10F7000C8A94E /* JasonLogAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF904351DD10F6E00C8A94E /* JasonLogAction.m */; };
 		F9283F33AA628489204A4867 /* Pods_Jasonette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0FCC971E030AF932E421D4 /* Pods_Jasonette.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1BD8E8486EE7AF4E4934685E /* Pods-Jasonette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasonette.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette.release.xcconfig"; sourceTree = "<group>"; };
 		2F0FCC971E030AF932E421D4 /* Pods_Jasonette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasonette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E025B471DE017EB0016786A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		5E09562A1DA33264007ADC78 /* JasonComponentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonComponentProtocol.h; sourceTree = "<group>"; };
 		5E09562B1DA33514007ADC78 /* JasonLabelComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonLabelComponent.h; sourceTree = "<group>"; };
 		5E09562C1DA33514007ADC78 /* JasonLabelComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasonLabelComponent.m; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 		5E3177A11D1F28C100D87778 /* JasonUtilAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonUtilAction.h; sourceTree = "<group>"; };
 		5E3177A21D1F28C100D87778 /* JasonUtilAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasonUtilAction.m; sourceTree = "<group>"; };
 		5E3840741D3A3D2200D1C421 /* placeholderr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholderr@2x.png"; sourceTree = "<group>"; };
+		5E9862671DCF1F640084CA4A /* JasonNotificationAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonNotificationAction.h; sourceTree = "<group>"; };
+		5E9862681DCF1F640084CA4A /* JasonNotificationAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasonNotificationAction.m; sourceTree = "<group>"; };
 		5EBFBB4F1D563ABD0074B805 /* UIView+JasonComponentPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JasonComponentPayload.h"; sourceTree = "<group>"; };
 		5EBFBB501D563ABD0074B805 /* UIView+JasonComponentPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JasonComponentPayload.m"; sourceTree = "<group>"; };
 		5EDF644C1DB0480500C5E403 /* JasonSessionAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonSessionAction.h; sourceTree = "<group>"; };
@@ -178,6 +183,8 @@
 		5EE85B7F1DA5C0080049EACE /* JasonLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonLayer.h; sourceTree = "<group>"; };
 		5EE85B801DA5C0080049EACE /* JasonLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasonLayer.m; sourceTree = "<group>"; };
 		5EEE3E6C1DBAE6DA00DE7ABD /* parser.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parser.js; sourceTree = "<group>"; };
+		5EF904341DD10F6E00C8A94E /* JasonLogAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasonLogAction.h; sourceTree = "<group>"; };
+		5EF904351DD10F6E00C8A94E /* JasonLogAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasonLogAction.m; sourceTree = "<group>"; };
 		BEB1DF488FABA35A255BC8E4 /* Pods-Jasonette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasonette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasonette/Pods-Jasonette.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +256,7 @@
 		5E0F0B911D20FFE2009291BE /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				5E025B471DE017EB0016786A /* Constants.h */,
 				5E31766D1D1E400C00D87778 /* Info.plist */,
 				5E3177791D1E4A8E00D87778 /* settings.plist */,
 				5E3177771D1E414C00D87778 /* Media.xcassets */,
@@ -315,8 +323,10 @@
 				5E3177A81D1F291200D87778 /* $cache */,
 				5E3177A91D1F294C00D87778 /* $convert */,
 				5E31778C1D1F208A00D87778 /* $geo */,
+				5EF904371DD10F7600C8A94E /* $log */,
 				5E31778B1D1F208500D87778 /* $media */,
 				5E31778E1D1F20A400D87778 /* $network */,
+				5E98626A1DCF1F6A0084CA4A /* $notification */,
 				5EDF644F1DB0480B00C5E403 /* $session */,
 				5E31778F1D1F20AB00D87778 /* $oauth */,
 				5E3177AB1D1F297400D87778 /* $timer */,
@@ -494,6 +504,15 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		5E98626A1DCF1F6A0084CA4A /* $notification */ = {
+			isa = PBXGroup;
+			children = (
+				5E9862671DCF1F640084CA4A /* JasonNotificationAction.h */,
+				5E9862681DCF1F640084CA4A /* JasonNotificationAction.m */,
+			);
+			name = $notification;
+			sourceTree = "<group>";
+		};
 		5EDF644F1DB0480B00C5E403 /* $session */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +610,15 @@
 				5EE85B801DA5C0080049EACE /* JasonLayer.m */,
 			);
 			name = Layer;
+			sourceTree = "<group>";
+		};
+		5EF904371DD10F7600C8A94E /* $log */ = {
+			isa = PBXGroup;
+			children = (
+				5EF904341DD10F6E00C8A94E /* JasonLogAction.h */,
+				5EF904351DD10F6E00C8A94E /* JasonLogAction.m */,
+			);
+			name = $log;
 			sourceTree = "<group>";
 		};
 		7CC63D0148253F040E828E0E /* Frameworks */ = {
@@ -775,11 +803,13 @@
 				5E09563F1DA34F34007ADC78 /* JasonHtmlComponent.m in Sources */,
 				5EE85B7E1DA59D740049EACE /* JasonComponent.m in Sources */,
 				5E3177641D1E411F00D87778 /* JasonPortraitPicker.m in Sources */,
+				5E9862691DCF1F640084CA4A /* JasonNotificationAction.m in Sources */,
 				5E31771D1D1E411F00D87778 /* JasonVerticalSectionItem.m in Sources */,
 				5E3177A71D1F28C100D87778 /* JasonUtilAction.m in Sources */,
 				5E0956421DA34F4D007ADC78 /* JasonSpaceComponent.m in Sources */,
 				5E3177701D1E411F00D87778 /* UIBarButtonItem+Badge.m in Sources */,
 				5E0956361DA34EFC007ADC78 /* JasonTextareaComponent.m in Sources */,
+				5EF904361DD10F7000C8A94E /* JasonLogAction.m in Sources */,
 				5E3177A31D1F28C100D87778 /* JasonCacheAction.m in Sources */,
 				5E31765E1D1E400C00D87778 /* main.m in Sources */,
 				5EBFBB511D563ABD0074B805 /* UIView+JasonComponentPayload.m in Sources */,

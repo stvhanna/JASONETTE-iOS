@@ -36,6 +36,7 @@
 - (id)init {
     if (self = [super init]) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
         self.searchMode = NO;
     }
     return self;
@@ -207,6 +208,18 @@
 }
 
 # pragma mark - Jason public API (Can be accessed by calling {"type": "$(METHOD_NAME)"}
+- (void)parse{
+    NSDictionary *options = [self options];
+    if(options[@"data"] && options[@"template"]){
+        id data = options[@"data"];
+        NSString *template_name = options[@"template"];
+        id template = VC.parser[template_name];
+        id result = [JasonHelper parse:data with:template];
+        [self success:result];
+    } else {
+        [self error:@{@"message": @"Need to pass both data and template"}];
+    }
+}
 - (void)href{
     JasonMemory *memory = [JasonMemory client];
     NSDictionary *href = [self options];
@@ -1579,11 +1592,9 @@
 - (void)setupTabBar: (NSDictionary *)t{
     
     if(!t){
-        VC.extendedLayoutIncludesOpaqueBars = YES;
         tabController.tabBar.hidden = YES;
         return;
     } else {
-        VC.extendedLayoutIncludesOpaqueBars = NO;
         tabController.tabBar.hidden = NO;
     }
    
@@ -1593,12 +1604,18 @@
         if(style[@"color"]){
             UIColor *c = [JasonHelper colorwithHexString:style[@"color"] alpha:1.0];
             [tabController.tabBar setTintColor:c];
+            [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : c }
+                                                     forState:UIControlStateSelected];
+            
         }
         if(style[@"color:disabled"]){
             UIColor *c = [JasonHelper colorwithHexString:style[@"color:disabled"] alpha:1.0];
             [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UITabBar class]]] setTintColor:c];
+            [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : c }
+                                                     forState:UIControlStateNormal];
+            
         }
-
+        
         if(style[@"background"]){
             [tabController.tabBar setClipsToBounds:YES];
             tabController.tabBar.shadowImage = [[UIImage alloc] init];
@@ -1770,13 +1787,42 @@
     [self onShow];
     VC.contentLoaded = YES;
 }
+- (void)onBackground{
+    NSDictionary *events = [VC valueForKey:@"events"];
+    if(events){
+        if(events[@"$background"]){
+            [self call:events[@"$background"]];
+        }
+    }
+}
 - (void)onForeground{
+    // Clear the app icon badge
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     NSDictionary *events = [VC valueForKey:@"events"];
     if(events){
         if(events[@"$foreground"]){
             [self call:events[@"$foreground"]];
         }
     }
+}
+- (void)onRemoteNotification: (NSDictionary *)payload{
+    NSDictionary *events = [VC valueForKey:@"events"];
+    if(events){
+        if(events[@"$notification.remote"]){
+            [self call:events[@"$notification.remote"] with: @{@"$jason": payload}];
+        }
+    }
+}
+
+- (void)onRemoteNotificationDeviceRegistered: (NSString *)device_token{
+    NSDictionary *events = [VC valueForKey:@"events"];
+    if(events){
+        if(events[@"$notification.registered"]){
+            [self call:events[@"$notification.registered"] with: @{@"$jason": @{@"device_token": device_token}}];
+        }
+    }
+
 }
 
 # pragma mark - View Linking
@@ -1840,6 +1886,11 @@
                      * Replace the current view
                      *
                      ****************************************************************************/
+                    
+                    // Get the index of the current view controller within the view stack, we will replace this index later
+                    NSMutableArray *view_stack = [NSMutableArray arrayWithArray:navigationController.viewControllers];
+                    NSInteger index = [view_stack indexOfObject:VC];
+                    
                     Class v = NSClassFromString(viewClass);
                     VC = [[v alloc] init];
 
@@ -1861,14 +1912,15 @@
                         VC.fresh = NO;
                     }
                     
-                    [navigationController popViewControllerAnimated:NO];
+                    [view_stack replaceObjectAtIndex:index withObject:VC];
                     [UIView transitionWithView:navigationController.view
                                       duration:0.2
                                        options:UIViewAnimationOptionTransitionCrossDissolve
                                     animations:^{
-                                        [navigationController pushViewController:VC animated:NO];
-                                    } 
+                                        [navigationController setViewControllers:view_stack animated:NO];
+                                    }
                                     completion:nil];
+                    
                 } else if([transition isEqualToString:@"modal"]){
                     /****************************************************************************
                      *
